@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home_nav"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+        <item
+            android:id="@+id/about_nav"
+            android:icon="@drawable/ic_sentiment_very_satisfied_black_18dp"
+            android:title="About Us" />
+        <item
+            android:id="@+id/rate_nav"
+            android:icon="@drawable/ic_star_border_black_18dp"
+            android:title="Rate Us" />
+
+    </group>
+
+    <item android:title="Extras">
+        <menu>
+            <item
+                android:id="@+id/share_nav"
+                android:icon="@drawable/ic_share_black_18dp"
+                android:title="Sharing is caring." />
+            <item
+                android:id="@+id/ads_nav"
+                android:icon="@drawable/ic_monetization_on_black_18dp"
+                android:title="Why annoyings ads?" />
+        </menu>
+    </item>
+
+
+
+</menu>

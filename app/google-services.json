@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "334195424970",
+    "firebase_url": "https://noname-f1fe8.firebaseio.com",
+    "project_id": "noname-f1fe8",
+    "storage_bucket": "noname-f1fe8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334195424970:android:6a466c616f1ee4c3",
+        "android_client_info": {
+          "package_name": "com.apps.rohansuri.noname"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334195424970-vf5hsp3su3qjk3s76fecknpn9rb2ae10.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.rohansuri.noname",
+            "certificate_hash": "1452054636cc94ef144fc5baaba8423b5f0a0190"
+          }
+        },
+        {
+          "client_id": "334195424970-m1ice2fibacphpsg4mai7g0ahrum492i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcDOtiYNDhra1z-HcOLUR1XIXQPtC_hDU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334195424970-m1ice2fibacphpsg4mai7g0ahrum492i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334195424970:android:47d5691b27e62d0a",
+        "android_client_info": {
+          "package_name": "com.equ.rohansuri.entrepreneurquotebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334195424970-m1ice2fibacphpsg4mai7g0ahrum492i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcDOtiYNDhra1z-HcOLUR1XIXQPtC_hDU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334195424970:android:d1257481233153ec",
+        "android_client_info": {
+          "package_name": "com.apps.rohansuri.entrepreneurquotebook2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334195424970-s13qmvbhlvis3ojpiokiblihe0hg7j8h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.rohansuri.entrepreneurquotebook2",
+            "certificate_hash": "1452054636cc94ef144fc5baaba8423b5f0a0190"
+          }
+        },
+        {
+          "client_id": "334195424970-m1ice2fibacphpsg4mai7g0ahrum492i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcDOtiYNDhra1z-HcOLUR1XIXQPtC_hDU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334195424970-m1ice2fibacphpsg4mai7g0ahrum492i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

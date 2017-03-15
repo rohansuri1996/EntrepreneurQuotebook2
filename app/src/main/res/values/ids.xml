@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="ic_launcher" id="0x7f020000" />
+    <public type="layout" name="file_explorer_layout" id="0x7f030000" />
+    <public type="layout" name="list_single" id="0x7f030001" />
+    <public type="layout" name="main" id="0x7f030002" />
+    <public type="layout" name="row" id="0x7f030003" />
+    <public type="raw" name="batman" id="0x7f040000" />
+    <public type="raw" name="batman_on_drugs" id="0x7f040001" />
+    <public type="raw" name="batmanface" id="0x7f040002" />
+    <public type="string" name="app_name" id="0x7f050000" />
+    <public type="id" name="path" id="0x7f060000" />
+    <public type="id" name="img" id="0x7f060001" />
+    <public type="id" name="txt" id="0x7f060002" />
+    <public type="id" name="shake" id="0x7f060003" />
+    <public type="id" name="web" id="0x7f060004" />
+    <public type="id" name="seekBar" id="0x7f060005" />
+    <public type="id" name="sensitivity" id="0x7f060006" />
+    <public type="id" name="rowtext" id="0x7f060007" />
+</resources>
