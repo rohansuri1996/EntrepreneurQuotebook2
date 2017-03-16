@@ -20,7 +20,7 @@ android:weightSum="1">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Developed by Rohan Suri."
+        android:text="Developed by Tigon Studios"
         android:id="@+id/textView"
         android:padding="16dp"
         android:textColor="@color/abc_primary_text_material_light"

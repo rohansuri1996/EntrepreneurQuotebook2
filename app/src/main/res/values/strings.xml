@@ -4,6 +4,15 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="add_post">Add post</string>
+    <string name="time">Time is money.</string>
+    <string name="about_toast">Ah huh,curios.</string>
+    <string name="share_toast"><![CDATA[Thanks,I love you <3]]></string>
+    <string name="rate_toast">Trust me, I\'m a 6 but hope my app\'s not</string>
+    <string name="app">Entrepreneur Quotebook</string>
+    <string name="placeholder_text">post title goes here</string>
+    <string name="share_btn">Share</string>
+    <string name="image">image</string>
 
 
 </resources>

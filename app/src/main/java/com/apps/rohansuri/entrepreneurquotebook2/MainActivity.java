@@ -1,33 +1,32 @@
 package com.apps.rohansuri.entrepreneurquotebook2;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,12 +42,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import android.Manifest;
 
 
 public class MainActivity extends AppCompatActivity
@@ -65,12 +63,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -84,7 +78,6 @@ public class MainActivity extends AppCompatActivity
         mBlogList.setLayoutManager(mLayoutManager);
         mLayoutManager.setStackFromEnd(true);
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -94,13 +87,12 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-1832954170852232/3364450909");
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // All emulators
-                .addTestDevice("8AB8A07791626C0E0F227AA014F0D980")
-
+                .addTestDevice("11E9DD4E27F18CF68FA8F6584F4B1D67") //avis ad code
+                .addTestDevice("8AB8A07791626C0E0F227AA014F0D980") //rohans phone
                 .build();
         mAdView.loadAd(adRequest);
 
@@ -116,18 +108,12 @@ public class MainActivity extends AppCompatActivity
             }
         } else { //do nothing
         }
-
-
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
-
-
         FirebaseRecyclerAdapter<Blog, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(
-
                 Blog.class,
                 R.layout.blog_row,
                 BlogViewHolder.class,
@@ -135,31 +121,23 @@ public class MainActivity extends AppCompatActivity
         ) {
 
             @Override
-
-            protected void populateViewHolder(final BlogViewHolder viewHolder, Blog model, int position) {
-
-
+            protected void populateViewHolder(final BlogViewHolder viewHolder, Blog model,  int position) {
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
-
-
                 viewHolder.mShareButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        onShareItem(viewHolder.mView);
-
+                        Toast.makeText(MainActivity.this, "Shared Image: "  , Toast.LENGTH_SHORT).show();
+                        //onShareItem(viewHolder.mView);
+                        onShareItem();
+                        // Get access to the URI for the bitmap
+                       // shareItem("https://firebasestorage.googleapis.com/v0/b/noname-f1fe8.appspot.com/o/Blog_Images%2F16094?alt=media&token=ea7e1f86-1b80-4fe8-81e0-014c553d26eb");
 
                     }
                 });
-
-
             }
         };
-
         mBlogList.setAdapter(firebaseRecyclerAdapter);
-
-
     }
 
     @Override
@@ -188,8 +166,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_add) {
             startActivity(new Intent(MainActivity.this, PostActivity.class));
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -198,7 +174,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         displaySelectedScreen(item.getItemId());
-
         return true;
     }
 
@@ -206,36 +181,32 @@ public class MainActivity extends AppCompatActivity
 
         //creating fragment object
         Fragment fragment = null;
-
         //initializing the fragment object which is selected
         switch (itemId) {
             case R.id.home_nav:
-
                 Intent i = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(i);
-
                 break;
             case R.id.ads_nav:
-                Toast.makeText(getApplicationContext(), "Time is money.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.time, Toast.LENGTH_SHORT).show();
                 fragment = new WhyAds_frag();
                 break;
             case R.id.about_nav:
-                Toast.makeText(getApplicationContext(), "Ah huh,curios.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.about_toast, Toast.LENGTH_SHORT).show();
                 fragment = new About_frag();
                 break;
             case R.id.share_nav:
-                Toast.makeText(getApplicationContext(), "Thanks,I love you <3", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.share_toast, Toast.LENGTH_SHORT).show();
                 Intent intent2 = new Intent();
                 intent2.setAction(Intent.ACTION_SEND);
                 intent2.setType("text/plain");
-                intent2.putExtra(Intent.EXTRA_TEXT, "Getting motivated made easier.Download the Entrepreneur Quotebook app(FREE) from Playstore.Click here-https://goo.gl/kTgbSH");
+                intent2.putExtra(Intent.EXTRA_TEXT, "Getting motivated made easier. Download the Entrepreneur Quotebook app(FREE) from Playstore.Click here-https://goo.gl/kTgbSH");
                 startActivity(Intent.createChooser(intent2, "Share via"));
                 break;
             case R.id.rate_nav:
-                Toast.makeText(getApplicationContext(), "Trust me,I'm a 6 but hope my app's not", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.rate_toast, Toast.LENGTH_SHORT).show();
                 rateApp();
                 break;
-
         }
 
         //replacing the fragment
@@ -271,9 +242,33 @@ public class MainActivity extends AppCompatActivity
         intent.addFlags(flags);
         return intent;
     }
-
+    public Uri getLocalBitmapUri(Bitmap bmp) {
+        Uri bmpUri = null;
+        try {
+            File file =  new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
+            FileOutputStream out = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
+            out.close();
+            bmpUri = Uri.fromFile(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bmpUri;
+    }
+    public void shareItem(String url) {
+        Picasso.with(getApplicationContext()).load(url).into(new Target() {
+            @Override public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("image/*");
+                i.putExtra(Intent.EXTRA_STREAM, getLocalBitmapUri(bitmap));
+                startActivity(Intent.createChooser(i, "Share Image"));
+            }
+            @Override public void onBitmapFailed(Drawable errorDrawable) { }
+            @Override public void onPrepareLoad(Drawable placeHolderDrawable) { }
+        });
+    }
     // Can be triggered by a view event such as a button press
-    public void onShareItem(View v) {
+    public void onShareItem() {
         // Get access to bitmap image from view
         ImageView ivImage = (ImageView) findViewById(R.id.post_image);
         // Get access to the URI for the bitmap
@@ -284,7 +279,7 @@ public class MainActivity extends AppCompatActivity
             shareIntent.setAction(Intent.ACTION_SEND);
             shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
             shareIntent.setType("image/*");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "Shared via the Entrepreneur Quotebook app.Download it from Playstore(FREE).Click here-https://goo.gl/kTgbSH");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Shared via the Entrepreneur Quotebook app. Download it from Play-store(FREE). https://goo.gl/kTgbSH");
             // Launch sharing dialog for image
             startActivity(Intent.createChooser(shareIntent, "Share Image"));
 
@@ -324,13 +319,11 @@ public class MainActivity extends AppCompatActivity
 
         Button mShareButton;
 
-
         public BlogViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
             mShareButton = (Button) mView.findViewById(R.id.btn_share);
         }
-
 
         public void setTitle(String title) {
             TextView post_title = (TextView) mView.findViewById(R.id.post_title);
@@ -339,9 +332,7 @@ public class MainActivity extends AppCompatActivity
 
         public void setImage(final Context ctx, final String image) {
 
-
-            final ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
-
+             final ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
 
             Picasso.with(ctx)
                     .load(image)
@@ -349,7 +340,6 @@ public class MainActivity extends AppCompatActivity
                     .into(post_image, new Callback() {
                         @Override
                         public void onSuccess() {
-
 
                         }
 
