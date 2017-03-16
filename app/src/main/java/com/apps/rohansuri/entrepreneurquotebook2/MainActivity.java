@@ -242,22 +242,29 @@ public class MainActivity extends AppCompatActivity
     // Can be triggered by a view event such as a button press
     public void shareItem(String url) {
         Picasso.with(getApplicationContext()).load(url).into(new Target() {
-            @Override public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("image/*");
                 i.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharedvia));
                 i.putExtra(Intent.EXTRA_STREAM, getLocalBitmapUri(bitmap));
                 startActivity(Intent.createChooser(i, getString(R.string.share_img)));
             }
-            @Override public void onBitmapFailed(Drawable errorDrawable) { }
-            @Override public void onPrepareLoad(Drawable placeHolderDrawable) { }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+            }
         });
     }
 
     public Uri getLocalBitmapUri(Bitmap bmp) {
         Uri bmpUri = null;
         try {
-            File file =  new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
+            File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
             FileOutputStream out = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
             out.close();
@@ -273,10 +280,10 @@ public class MainActivity extends AppCompatActivity
 
         Button mShareButton;
         ImageButton share;
+
         public BlogViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-            //mShareButton = (Button) mView.findViewById(R.id.btn_share);
             share = (ImageButton) mView.findViewById(R.id.button2); //avi's button
         }
 
@@ -287,7 +294,7 @@ public class MainActivity extends AppCompatActivity
 
         public void setImage(final Context ctx, final String image) {
 
-             final ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
+            final ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
 
             Picasso.with(ctx)
                     .load(image)
@@ -295,7 +302,6 @@ public class MainActivity extends AppCompatActivity
                     .into(post_image, new Callback() {
                         @Override
                         public void onSuccess() {
-
                         }
 
                         @Override

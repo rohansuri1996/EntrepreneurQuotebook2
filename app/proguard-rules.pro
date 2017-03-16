@@ -19,3 +19,17 @@
 # Add this global rule
 -keepattributes Signature
 
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn com.squareup.okhttp.internal.huc.**
+
+-keepattributes EnclosingMethod
+-keepattributes InnerClasses
+-keep class com.firebase.** { *; }
+-keep class org.apache.** { *; }
+-keepnames class com.shaded.fasterxml.** { *; }
+-keepnames class com.fasterxml.jackson.** { *; }
+-keepnames class javax.servlet.** { *; }
+-keepnames class org.ietf.jgss.** { *; }
+-dontwarn org.apache.**
+-dontwarn org.w3c.dom.**
