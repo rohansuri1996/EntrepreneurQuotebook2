@@ -6,13 +6,17 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="add_post">Add post</string>
     <string name="time">Time is money.</string>
-    <string name="about_toast">Ah huh,curios.</string>
-    <string name="share_toast"><![CDATA[Thanks,I love you <3]]></string>
+    <string name="about_toast">Ah huh, curios.</string>
+    <string name="share_toast"><![CDATA[Thanks, I love you <3]]></string>
     <string name="rate_toast">Trust me, I\'m a 6 but hope my app\'s not</string>
     <string name="app">Entrepreneur Quotebook</string>
     <string name="placeholder_text">post title goes here</string>
     <string name="share_btn">Share</string>
     <string name="image">image</string>
+    <string name="sharedvia">Shared via the Entrepreneur Quotebook app. Download it from Play-store(FREE). https://goo.gl/kTgbSH</string>
+    <string name="getmotivated">Getting motivated made easier. Download the Entrepreneur Quotebook app(FREE) from Playstore. https://goo.gl/kTgbSH</string>
+    <string name="share">Share App</string>
+    <string name="share_img">Share Image</string>
 
 
 </resources>

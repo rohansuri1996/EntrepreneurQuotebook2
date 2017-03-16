@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -28,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -121,18 +121,14 @@ public class MainActivity extends AppCompatActivity
         ) {
 
             @Override
-            protected void populateViewHolder(final BlogViewHolder viewHolder, Blog model,  int position) {
+            protected void populateViewHolder(final BlogViewHolder viewHolder, final Blog model, int position) {
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
-                viewHolder.mShareButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(MainActivity.this, "Shared Image: "  , Toast.LENGTH_SHORT).show();
-                        //onShareItem(viewHolder.mView);
-                        onShareItem();
-                        // Get access to the URI for the bitmap
-                       // shareItem("https://firebasestorage.googleapis.com/v0/b/noname-f1fe8.appspot.com/o/Blog_Images%2F16094?alt=media&token=ea7e1f86-1b80-4fe8-81e0-014c553d26eb");
 
+                viewHolder.share.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        shareItem(model.getImage());
                     }
                 });
             }
@@ -200,8 +196,8 @@ public class MainActivity extends AppCompatActivity
                 Intent intent2 = new Intent();
                 intent2.setAction(Intent.ACTION_SEND);
                 intent2.setType("text/plain");
-                intent2.putExtra(Intent.EXTRA_TEXT, "Getting motivated made easier. Download the Entrepreneur Quotebook app(FREE) from Playstore.Click here-https://goo.gl/kTgbSH");
-                startActivity(Intent.createChooser(intent2, "Share via"));
+                intent2.putExtra(Intent.EXTRA_TEXT, getString(R.string.getmotivated));
+                startActivity(Intent.createChooser(intent2, getString(R.string.share)));
                 break;
             case R.id.rate_nav:
                 Toast.makeText(getApplicationContext(), R.string.rate_toast, Toast.LENGTH_SHORT).show();
@@ -242,68 +238,26 @@ public class MainActivity extends AppCompatActivity
         intent.addFlags(flags);
         return intent;
     }
-    public Uri getLocalBitmapUri(Bitmap bmp) {
-        Uri bmpUri = null;
-        try {
-            File file =  new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
-            FileOutputStream out = new FileOutputStream(file);
-            bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
-            out.close();
-            bmpUri = Uri.fromFile(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return bmpUri;
-    }
+
+    // Can be triggered by a view event such as a button press
     public void shareItem(String url) {
         Picasso.with(getApplicationContext()).load(url).into(new Target() {
             @Override public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("image/*");
+                i.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharedvia));
                 i.putExtra(Intent.EXTRA_STREAM, getLocalBitmapUri(bitmap));
-                startActivity(Intent.createChooser(i, "Share Image"));
+                startActivity(Intent.createChooser(i, getString(R.string.share_img)));
             }
             @Override public void onBitmapFailed(Drawable errorDrawable) { }
             @Override public void onPrepareLoad(Drawable placeHolderDrawable) { }
         });
     }
-    // Can be triggered by a view event such as a button press
-    public void onShareItem() {
-        // Get access to bitmap image from view
-        ImageView ivImage = (ImageView) findViewById(R.id.post_image);
-        // Get access to the URI for the bitmap
-        Uri bmpUri = getLocalBitmapUri(ivImage);
-        if (bmpUri != null) {
-            // Construct a ShareIntent with link to image
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
-            shareIntent.setType("image/*");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "Shared via the Entrepreneur Quotebook app. Download it from Play-store(FREE). https://goo.gl/kTgbSH");
-            // Launch sharing dialog for image
-            startActivity(Intent.createChooser(shareIntent, "Share Image"));
 
-        } else {
-
-        }
-    }
-
-    // Returns the URI path to the Bitmap displayed in specified ImageView
-    public Uri getLocalBitmapUri(ImageView imageView) {
-        // Extract Bitmap from ImageView drawable
-        Drawable drawable = imageView.getDrawable();
-        Bitmap bmp = null;
-        if (drawable instanceof BitmapDrawable) {
-            bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        } else {
-            return null;
-        }
-        // Store image to default external storage directory
+    public Uri getLocalBitmapUri(Bitmap bmp) {
         Uri bmpUri = null;
         try {
-            File file = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS), "share_image_" + System.currentTimeMillis() + ".png");
-            file.getParentFile().mkdirs();
+            File file =  new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
             FileOutputStream out = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
             out.close();
@@ -318,11 +272,12 @@ public class MainActivity extends AppCompatActivity
         View mView;
 
         Button mShareButton;
-
+        ImageButton share;
         public BlogViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-            mShareButton = (Button) mView.findViewById(R.id.btn_share);
+            //mShareButton = (Button) mView.findViewById(R.id.btn_share);
+            share = (ImageButton) mView.findViewById(R.id.button2); //avi's button
         }
 
         public void setTitle(String title) {

@@ -11,6 +11,8 @@ android {
         versionName "3.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resConfig("en")
+        vectorDrawables.useSupportLibrary = true
+
 
     }
     buildTypes {
