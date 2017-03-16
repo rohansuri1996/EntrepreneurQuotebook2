@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // All emulators
-                .addTestDevice("11E9DD4E27F18CF68FA8F6584F4B1D67") //avis ad code
+                .addTestDevice("11E9DD4E27F18CF68FA8F6584F4B1D67") //avi's ad code
                 .addTestDevice("8AB8A07791626C0E0F227AA014F0D980") //rohans phone
                 .build();
         mAdView.loadAd(adRequest);
