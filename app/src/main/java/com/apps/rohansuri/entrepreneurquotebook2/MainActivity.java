@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.Keep;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -27,7 +28,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<Blog, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(
+         FirebaseRecyclerAdapter<Blog, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(
                 Blog.class,
                 R.layout.blog_row,
                 BlogViewHolder.class,
@@ -274,17 +274,15 @@ public class MainActivity extends AppCompatActivity
         }
         return bmpUri;
     }
-
+    @Keep
     public static class BlogViewHolder extends RecyclerView.ViewHolder {
         View mView;
-
-        Button mShareButton;
-        ImageButton share;
+        Button share;
 
         public BlogViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-            share = (ImageButton) mView.findViewById(R.id.button2); //avi's button
+            share = (Button) mView.findViewById(R.id.btn_share); //avi's button
         }
 
         public void setTitle(String title) {

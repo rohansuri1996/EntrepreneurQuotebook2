@@ -5,20 +5,39 @@ android {
     buildToolsVersion '25.0.2'
     defaultConfig {
         applicationId "com.apps.rohansuri.entrepreneurquotebook2"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 25
-        versionCode 8
-        versionName "3.0.0"
+        versionCode 9
+        versionName "3.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resConfig("en")
         vectorDrawables.useSupportLibrary = true
+        multiDexEnabled false
+    }
 
+    productFlavors {
+        dev {
+            // Enable pre-dexing to produce an APK that can be tested on
+            // Android 5.0+ without the time-consuming DEX build processes.
+            minSdkVersion 21
 
+        }
+        prod {
+            // The actual minSdkVersion for the production version.
+            minSdkVersion 19
+        }
     }
     buildTypes {
+        debug{
+            minifyEnabled true
+            useProguard true //don't obfuscate
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled true
+            useProguard false //don't obfuscate
+            //shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -29,6 +48,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:design:25.3.0'
     compile 'com.android.support:recyclerview-v7:25.3.0'
@@ -36,13 +56,17 @@ dependencies {
     compile 'com.google.firebase:firebase-database:10.0.1'
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.google.firebase:firebase-storage:10.0.1'
-    compile 'com.firebaseui:firebase-ui-database:0.4.4'
+    compile 'com.firebaseui:firebase-ui-database:1.0.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.1'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.google.firebase:firebase-ads:10.0.1'
     compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile 'com.google.firebase:firebase-auth:10.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+    compile 'com.google.android.gms:play-services-gcm:10.0.1'
+
 }
 
 
