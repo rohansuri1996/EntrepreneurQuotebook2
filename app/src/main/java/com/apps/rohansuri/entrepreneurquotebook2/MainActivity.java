@@ -286,6 +286,10 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 Toast.makeText(getApplicationContext(), "Trust me,I'm a 6 but hope my app's not", Toast.LENGTH_SHORT).show();
                 rateApp();
                 break;
+            case R.id.logout_nav:
+                Toast.makeText(getApplicationContext(), "We'll be waiting.", Toast.LENGTH_SHORT).show();
+                logout();
+                break;
 
         }
 
@@ -298,6 +302,10 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+    private void logout() {
+        mAuth.signOut();
     }
 
     public void rateApp() {

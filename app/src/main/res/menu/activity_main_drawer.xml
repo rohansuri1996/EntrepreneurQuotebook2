@@ -15,6 +15,11 @@
             android:icon="@drawable/ic_star_border_black_18dp"
             android:title="Rate Us" />
 
+        <item
+            android:id="@+id/logout_nav"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
+            android:title="Log Out" />
+
     </group>
 
     <item android:title="Extras">
