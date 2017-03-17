@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.Keep;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -47,6 +48,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -159,7 +161,7 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             @Override
 
-            protected void populateViewHolder(final BlogViewHolder viewHolder, Blog model, int position) {
+            protected void populateViewHolder(final BlogViewHolder viewHolder, final Blog model, int position) {
 
 
                 viewHolder.setTitle(model.getTitle());
@@ -168,11 +170,8 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                 viewHolder.mShareButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-
-                        onShareItem(viewHolder.mView);
-
-
+                    public void onClick(View v) {
+                        shareItem(model.getImage());
                     }
                 });
 
@@ -332,42 +331,31 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     }
 
     // Can be triggered by a view event such as a button press
-    public void onShareItem(View v) {
-        // Get access to bitmap image from view
-        ImageView ivImage = (ImageView) findViewById(R.id.post_image);
-        // Get access to the URI for the bitmap
-        Uri bmpUri = getLocalBitmapUri(ivImage);
-        if (bmpUri != null) {
-            // Construct a ShareIntent with link to image
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
-            shareIntent.setType("image/*");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "Shared via the Entrepreneur Quotebook app.Download it from Playstore(FREE).Click here-https://goo.gl/kTgbSH");
-            // Launch sharing dialog for image
-            startActivity(Intent.createChooser(shareIntent, "Share Image"));
+    public void shareItem(String url) {
+        Picasso.with(getApplicationContext()).load(url).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("image/*");
+                i.putExtra(Intent.EXTRA_TEXT, getString(R.string.sharedvia));
+                i.putExtra(Intent.EXTRA_STREAM, getLocalBitmapUri(bitmap));
+                startActivity(Intent.createChooser(i, getString(R.string.share_img)));
+            }
 
-        } else {
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+            }
 
-        }
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+            }
+        });
     }
 
-    // Returns the URI path to the Bitmap displayed in specified ImageView
-    public Uri getLocalBitmapUri(ImageView imageView) {
-        // Extract Bitmap from ImageView drawable
-        Drawable drawable = imageView.getDrawable();
-        Bitmap bmp = null;
-        if (drawable instanceof BitmapDrawable) {
-            bmp = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        } else {
-            return null;
-        }
-        // Store image to default external storage directory
+    public Uri getLocalBitmapUri(Bitmap bmp) {
         Uri bmpUri = null;
         try {
-            File file = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS), "share_image_" + System.currentTimeMillis() + ".png");
-            file.getParentFile().mkdirs();
+            File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
             FileOutputStream out = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
             out.close();
@@ -378,6 +366,7 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         return bmpUri;
     }
 
+    @Keep
     public static class BlogViewHolder extends RecyclerView.ViewHolder {
         View mView;
 
