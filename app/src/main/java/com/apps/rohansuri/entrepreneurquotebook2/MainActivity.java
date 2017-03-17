@@ -1,33 +1,33 @@
 package com.apps.rohansuri.entrepreneurquotebook2;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,8 +38,12 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -47,8 +51,6 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import android.Manifest;
 
 
 public class MainActivity extends AppCompatActivity
@@ -61,9 +63,26 @@ public class MainActivity extends AppCompatActivity
 
     private LinearLayoutManager mLayoutManager;
 
+    private FirebaseAuth mAuth;//for login
+
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+    private DatabaseReference mDatabaseUsers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+              if (firebaseAuth.getCurrentUser()==null){
+                  Intent loginIntent=new Intent(MainActivity.this,LoginActivity.class);
+loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                  startActivity(loginIntent);
+        }}};
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
 
@@ -75,6 +94,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
+        mDatabaseUsers=FirebaseDatabase.getInstance().getReference().child("Users");
+        mDatabaseUsers.keepSynced(true);
         mDatabase.keepSynced(true);
         mBlogList = (RecyclerView) findViewById(R.id.blog_List);
         mBlogList.setHasFixedSize(true);
@@ -116,6 +137,7 @@ public class MainActivity extends AppCompatActivity
             }
         } else { //do nothing
         }
+        checkUserExist();
 
 
     }
@@ -125,6 +147,7 @@ public class MainActivity extends AppCompatActivity
     protected void onStart() {
         super.onStart();
 
+        mAuth.addAuthStateListener(mAuthListener);
 
         FirebaseRecyclerAdapter<Blog, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(
 
@@ -159,6 +182,34 @@ public class MainActivity extends AppCompatActivity
 
         mBlogList.setAdapter(firebaseRecyclerAdapter);
 
+
+    }
+    private void checkUserExist(){
+
+        if (mAuth.getCurrentUser() !=null) {
+            final String user_id = mAuth.getCurrentUser().getUid();
+
+            mDatabaseUsers.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.hasChild(user_id)) {
+
+                        Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
+                        setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(setupIntent);
+
+
+                    }
+
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
 
     }
 
@@ -367,6 +418,7 @@ public class MainActivity extends AppCompatActivity
 
 
         }
+
 
 
     }
