@@ -28,16 +28,16 @@
         android:id="@+id/setupNameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/setupSubmitBtn"
+        android:layout_below="@+id/textView6"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/back"
         android:ems="10"
         android:hint="What's your name?"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-
-        android:layout_below="@+id/textView6"
-        android:layout_alignEnd="@+id/setupSubmitBtn" />
+        android:inputType="textCapWords|textPersonName"
+        android:maxLines="1"
+        android:padding="10dp" />
 
     <Button
         android:id="@+id/setupSubmitBtn"

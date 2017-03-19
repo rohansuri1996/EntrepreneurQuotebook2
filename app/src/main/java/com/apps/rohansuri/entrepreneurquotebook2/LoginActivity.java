@@ -2,9 +2,9 @@ package com.apps.rohansuri.entrepreneurquotebook2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -28,8 +28,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static android.os.Build.VERSION_CODES.M;
-
 public class LoginActivity extends AppCompatActivity {
 
     private SignInButton mGoogleBtn;
@@ -39,8 +37,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG="LoginActivity";
     private ProgressDialog mProgress;
     private DatabaseReference mDatabaseUsers;
-
-
 
 
     @Override
@@ -57,8 +53,6 @@ public class LoginActivity extends AppCompatActivity {
         mProgress=new ProgressDialog(this);
 
         mGoogleBtn=(SignInButton)findViewById(R.id.googleBtn);
-
-
 
 
         // Configure Google Sign In
@@ -110,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 // Google Sign In failed, update UI appropriately
                 mProgress.dismiss();
-                Toast.makeText(getApplicationContext(), "Error,try again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error, try again.", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -156,13 +150,10 @@ public class LoginActivity extends AppCompatActivity {
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mainIntent);
 
-
-
                     } else {
                         Intent setupIntent = new Intent(LoginActivity.this, SetupActivity.class);
                         setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(setupIntent);
-
                     }
                 }
 

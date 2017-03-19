@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -30,7 +29,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,30 +71,32 @@ public class MainActivity extends AppCompatActivity
     private DatabaseReference mDatabaseUsers;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-              if (firebaseAuth.getCurrentUser()==null){
-                  Intent loginIntent=new Intent(MainActivity.this,LoginActivity.class);
-loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                  startActivity(loginIntent);
-        }}};
+              if (firebaseAuth.getCurrentUser() == null){
+                  Toast.makeText(MainActivity.this, "onAuthStateChanged", Toast.LENGTH_SHORT).show();
+                    Intent loginIntent=new Intent(MainActivity.this,LoginActivity.class);
+                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(loginIntent);
+        }
+
+            else
+              {
+                  Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
+
+              }
+            }};
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -112,7 +112,6 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         mBlogList.setLayoutManager(mLayoutManager);
         mLayoutManager.setStackFromEnd(true);
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -122,13 +121,12 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-1832954170852232/3364450909");
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // All emulators
                 .addTestDevice("8AB8A07791626C0E0F227AA014F0D980")
-
+                .addTestDevice("11E9DD4E27F18CF68FA8F6584F4B1D67") //Avi's phone
                 .build();
         mAdView.loadAd(adRequest);
 
@@ -168,10 +166,8 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             protected void populateViewHolder(final BlogViewHolder viewHolder, final Blog model, int position) {
 
-
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
-
 
                 viewHolder.mShareButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -179,8 +175,6 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         shareItem(model.getImage());
                     }
                 });
-
-
             }
         };
 
@@ -197,19 +191,17 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.hasChild(user_id)) {
-
-                        Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
-                        setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(setupIntent);
-
-
+                        Toast.makeText(MainActivity.this, "UserExit" + user_id , Toast.LENGTH_SHORT).show();
+                       // Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
+                        //setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                       // startActivity(setupIntent);
                     }
-
 
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(MainActivity.this, "Canceled" + user_id , Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -296,7 +288,7 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 break;
             case R.id.promotion_nav:
                 Toast.makeText(getApplicationContext(), "Hope we do good business", Toast.LENGTH_SHORT).show();
-                logout();
+                fragment = new paid_promotions();
                 break;
 
         }
