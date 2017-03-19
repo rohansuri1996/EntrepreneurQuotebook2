@@ -294,6 +294,10 @@ loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 Toast.makeText(getApplicationContext(), "We'll be waiting.", Toast.LENGTH_SHORT).show();
                 logout();
                 break;
+            case R.id.promotion_nav:
+                Toast.makeText(getApplicationContext(), "Hope we do good business", Toast.LENGTH_SHORT).show();
+                logout();
+                break;
 
         }
 

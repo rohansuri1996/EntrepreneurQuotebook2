@@ -32,6 +32,10 @@
                 android:id="@+id/ads_nav"
                 android:icon="@drawable/ic_monetization_on_black_18dp"
                 android:title="Why annoyings ads?" />
+            <item
+                android:id="@+id/promotion_nav"
+                android:icon="@drawable/ic_business_black_24dp"
+                android:title="Promote your business here." />
         </menu>
     </item>
 
