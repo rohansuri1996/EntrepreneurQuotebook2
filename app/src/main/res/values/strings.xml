@@ -4,8 +4,25 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="share_img">Share</string>
+     <string name="add_post">Add post</string>
+    <string name="time">Time is money.</string>
+    <string name="about_toast">Ah huh, curios.</string>
+    <string name="share_toast"><![CDATA[Thanks, I love you <3]]></string>
+    <string name="rate_toast">Trust me, I\'m a 6 but hope my app\'s not</string>
+    <string name="app">Entrepreneur Quotebook</string>
+    <string name="placeholder_text">post title goes here</string>
+    <string name="share_btn">Share</string>
+    <string name="image">image</string>
     <string name="sharedvia">Shared via the Entrepreneur Quotebook app. Download it from Play-store(FREE). https://goo.gl/kTgbSH</string>
-
+    <string name="getmotivated">Getting motivated made easier. Download the Entrepreneur Quotebook app(FREE) from Playstore. https://goo.gl/kTgbSH</string>
+    <string name="share">Share App</string>
+    <string name="share_img">Share</string>
+    <string name="about_image">about image</string>
+    <string name="developed_by_tigon_studios">Developed by Tigon Studios</string>
+    <string name="contact_us_tigonstudios1_gmail_com">Contact us: tigonstudios1@gmail.com</string>
+    <string name="note_this_application_requires_an_active_internet_connection">Note: This application requires an active internet connection.</string>
+    <string name="disclaimer_all_the_images_used_in_this_app_belongs_to_their_respective_owners">Disclaimer: All the images used in this app belongs to their respective owners.</string>
+  
+    
 
 </resources>
