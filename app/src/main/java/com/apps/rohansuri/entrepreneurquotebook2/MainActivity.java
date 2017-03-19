@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity
 
             else
               {
-                  Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(MainActivity.this, "onAuthStateChanged Else Statement", Toast.LENGTH_SHORT).show();
 
               }
             }};
