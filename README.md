@@ -10,12 +10,14 @@ I will try to update the README with new and useful information
 
 
 
-*Useful Links    *
+Useful Links
 
 
 http://stackoverflow.com/a/32391177/4276951 (Switch activities after login)
 
-http://stackoverflow.com/a/32437595/4276951
+http://stackoverflow.com/a/32437595/4276951 (Also Switch activities after login)
+
+http://stackoverflow.com/a/23506243/4276951 (Another Switch activities after login)
 
 http://www.kevinrschultz.com/blog/2014/02/15/proguard-with-gradle/
 
