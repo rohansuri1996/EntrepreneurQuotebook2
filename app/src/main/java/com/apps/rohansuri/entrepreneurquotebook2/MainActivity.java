@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // All emulators
-                .addTestDevice("11E9DD4E27F18CF68FA8F6584F4B1D67") //avi's ad code
+                .addTestDevice("11E9DD4E27F18CF68FA8F6584F4B1D67") //Avi's phone
                 .addTestDevice("8AB8A07791626C0E0F227AA014F0D980") //rohans phone
                 .build();
         mAdView.loadAd(adRequest);
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setImage(getApplicationContext(), model.getImage());
 
-                viewHolder.share.setOnClickListener(new View.OnClickListener() {
+                viewHolder.mShareButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         shareItem(model.getImage());
@@ -277,12 +277,12 @@ public class MainActivity extends AppCompatActivity
     @Keep
     public static class BlogViewHolder extends RecyclerView.ViewHolder {
         View mView;
-        Button share;
+        Button mShareButton;
 
         public BlogViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-            share = (Button) mView.findViewById(R.id.btn_share); //avi's button
+            mShareButton = (Button) mView.findViewById(R.id.btn_share); //avi's button
         }
 
         public void setTitle(String title) {
