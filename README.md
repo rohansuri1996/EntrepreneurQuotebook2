@@ -10,7 +10,7 @@ I will try to update the README with new and useful information
 
 
 
-*Useful Links    
+*Useful Links    *
 
 
 http://stackoverflow.com/a/32391177/4276951 (Switch activities after login)
