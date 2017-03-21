@@ -5,16 +5,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
      <string name="add_post">Add post</string>
-    <string name="time">Time is money.</string>
-    <string name="about_toast">Ah huh, curios.</string>
-    <string name="share_toast"><![CDATA[Thanks, I love you <3]]></string>
-    <string name="rate_toast">Trust me, I\'m a 6 but hope my app\'s not</string>
+
     <string name="app">Entrepreneur Quotebook</string>
     <string name="placeholder_text">post title goes here</string>
     <string name="share_btn">Share</string>
     <string name="image">image</string>
     <string name="sharedvia">Shared via the Entrepreneur Quotebook app. Download it from Play-store(FREE). https://goo.gl/kTgbSH</string>
-    <string name="getmotivated">Getting motivated made easier. Download the Entrepreneur Quotebook app(FREE) from Playstore. https://goo.gl/kTgbSH</string>
     <string name="share">Share App</string>
     <string name="share_img">Share</string>
     <string name="about_image">about image</string>
@@ -22,7 +18,24 @@
     <string name="contact_us_tigonstudios1_gmail_com">Contact us: tigonstudios1@gmail.com</string>
     <string name="note_this_application_requires_an_active_internet_connection">Note: This application requires an active internet connection.</string>
     <string name="disclaimer_all_the_images_used_in_this_app_belongs_to_their_respective_owners">Disclaimer: All the images used in this app belongs to their respective owners.</string>
-  
-    
+    <string name="ads_toast">Time is money.</string>
+    <string name="time">Time is money.</string>
+    <string name="about_toast">Ah huh, curios.</string>
+    <string name="share_toast"><![CDATA[Thanks, I love you <3]]></string>
+    <string name="rate_toast">Trust me, I\'m a 6 but hope my app\'s not</string>
+    <string name="logout_toast">We\'ll be waiting.</string>
+    <string name="promotion_toast">Hope we do good business</string>
+    <string name="shared_toast">Getting motivated made easier. Download the Entrepreneur Quotebook app (Free) from Play-store. Click here: https://goo.gl/kTgbSH</string>
+    <string name="home">Home</string>
+    <string name="about_us">About Us</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="log_out">Log Out</string>
+    <string name="extras">Extras</string>
+    <string name="sharing_is_caring">Sharing is caring.</string>
+    <string name="why_annoyings_ads">Why annoyings ads?</string>
+    <string name="promote_your_business_here">Promote your business here.</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="privact_toast">Staying Secure?</string>
+    <string name="ads_activity">Advertisements help us pay for the maintaince of the database and buy some PIZZA.</string>
 
 </resources>

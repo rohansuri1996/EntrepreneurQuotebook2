@@ -45,15 +45,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mDatabaseUsers= FirebaseDatabase.getInstance().getReference().child("Users");
+        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabaseUsers.keepSynced(true);
 
-        mAuth=FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
-        mProgress=new ProgressDialog(this);
+        mProgress = new ProgressDialog(this);
 
-        mGoogleBtn=(SignInButton)findViewById(R.id.googleBtn);
-
+        mGoogleBtn = (SignInButton)findViewById(R.id.googleBtn);
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -62,11 +61,10 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
 
-        mGoogleApiClient=new GoogleApiClient.Builder(this)
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
                     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
                     }
                 }).addApi(Auth.GOOGLE_SIGN_IN_API,gso)
                 .build();
@@ -94,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
 
-            mProgress.setMessage("Signing In.");
+            mProgress.setMessage("Signing in.");
             mProgress.show();
 
             if (result.isSuccess()) {
@@ -127,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.w(TAG, "signInWithCredential", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                        }else {
+                        } else {
                             mProgress.dismiss();
                             checkUserExist();
                             // ...

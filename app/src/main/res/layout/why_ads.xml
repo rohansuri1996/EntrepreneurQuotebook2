@@ -6,7 +6,7 @@
     android:weightSum="1">
 
     <TextView
-        android:text="Advertisement helps us to pay for the maintaince of the database and buy some PIZZA. "
+        android:text="@string/ads_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView2"

@@ -79,21 +79,17 @@ public class MainActivity extends AppCompatActivity
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-              if (firebaseAuth.getCurrentUser() == null){
-                  Toast.makeText(MainActivity.this, "onAuthStateChanged", Toast.LENGTH_SHORT).show();
-                    Intent loginIntent=new Intent(MainActivity.this,LoginActivity.class);
+                if (firebaseAuth.getCurrentUser() == null) {
+                    Toast.makeText(MainActivity.this, "onAuthStateChanged", Toast.LENGTH_SHORT).show();
+                    Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
                     loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(loginIntent);
-        }
-
-            else
-              {
-                  Toast.makeText(MainActivity.this, "onAuthStateChanged Else Statement", Toast.LENGTH_SHORT).show();
-
-              }
-            }};
+                } else {
+                    Toast.makeText(MainActivity.this, "onAuthStateChanged Else Statement", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -101,7 +97,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
-        mDatabaseUsers=FirebaseDatabase.getInstance().getReference().child("Users");
+        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabaseUsers.keepSynced(true);
         mDatabase.keepSynced(true);
         mBlogList = (RecyclerView) findViewById(R.id.blog_List);
@@ -144,9 +140,7 @@ public class MainActivity extends AppCompatActivity
         }
         checkUserExist();
 
-
     }
-
 
     @Override
     protected void onStart() {
@@ -155,7 +149,6 @@ public class MainActivity extends AppCompatActivity
         mAuth.addAuthStateListener(mAuthListener);
 
         FirebaseRecyclerAdapter<Blog, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(
-
                 Blog.class,
                 R.layout.blog_row,
                 BlogViewHolder.class,
@@ -163,7 +156,6 @@ public class MainActivity extends AppCompatActivity
         ) {
 
             @Override
-
             protected void populateViewHolder(final BlogViewHolder viewHolder, final Blog model, int position) {
 
                 viewHolder.setTitle(model.getTitle());
@@ -179,30 +171,27 @@ public class MainActivity extends AppCompatActivity
         };
 
         mBlogList.setAdapter(firebaseRecyclerAdapter);
-
-
     }
-    private void checkUserExist(){
 
-        if (mAuth.getCurrentUser() !=null) {
+    private void checkUserExist() {
+
+        if (mAuth.getCurrentUser() != null) {
             final String user_id = mAuth.getCurrentUser().getUid();
 
             mDatabaseUsers.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.hasChild(user_id)) {
-                        Toast.makeText(MainActivity.this, "UserExit" + user_id , Toast.LENGTH_SHORT).show();
-                       // Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
+                        Toast.makeText(MainActivity.this, "UserExit" + user_id, Toast.LENGTH_SHORT).show();
+                        // Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
                         //setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                       // startActivity(setupIntent);
+                        // startActivity(setupIntent);
                     }
-
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(MainActivity.this, "Canceled" + user_id , Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(MainActivity.this, "Canceled" + user_id, Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -235,8 +224,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_add) {
             startActivity(new Intent(MainActivity.this, PostActivity.class));
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -245,7 +232,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         displaySelectedScreen(item.getItemId());
-
         return true;
     }
 
@@ -257,40 +243,41 @@ public class MainActivity extends AppCompatActivity
         //initializing the fragment object which is selected
         switch (itemId) {
             case R.id.home_nav:
-
                 Intent i = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(i);
-
                 break;
             case R.id.ads_nav:
-                Toast.makeText(getApplicationContext(), "Time is money.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.ads_toast, Toast.LENGTH_SHORT).show();
                 fragment = new WhyAds_frag();
                 break;
             case R.id.about_nav:
-                Toast.makeText(getApplicationContext(), "Ah huh,curios.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.about_toast, Toast.LENGTH_SHORT).show();
                 fragment = new About_frag();
                 break;
             case R.id.share_nav:
-                Toast.makeText(getApplicationContext(), "Thanks,I love you <3", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.share_toast, Toast.LENGTH_SHORT).show();
                 Intent intent2 = new Intent();
                 intent2.setAction(Intent.ACTION_SEND);
                 intent2.setType("text/plain");
-                intent2.putExtra(Intent.EXTRA_TEXT, "Getting motivated made easier.Download the Entrepreneur Quotebook app(FREE) from Playstore.Click here-https://goo.gl/kTgbSH");
+                intent2.putExtra(Intent.EXTRA_TEXT, getString(R.string.shared_toast));
                 startActivity(Intent.createChooser(intent2, "Share via"));
                 break;
             case R.id.rate_nav:
-                Toast.makeText(getApplicationContext(), "Trust me,I'm a 6 but hope my app's not", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.rate_toast, Toast.LENGTH_SHORT).show();
                 rateApp();
                 break;
             case R.id.logout_nav:
-                Toast.makeText(getApplicationContext(), "We'll be waiting.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.logout_toast, Toast.LENGTH_SHORT).show();
                 logout();
                 break;
             case R.id.promotion_nav:
-                Toast.makeText(getApplicationContext(), "Hope we do good business", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.promotion_toast, Toast.LENGTH_SHORT).show();
                 fragment = new paid_promotions();
                 break;
-
+            case R.id.privacy_nav:
+                Toast.makeText(getApplicationContext(), R.string.privact_toast, Toast.LENGTH_SHORT).show();
+                fragment = new Privacy_frag();
+                break;
         }
 
         //replacing the fragment
@@ -370,16 +357,13 @@ public class MainActivity extends AppCompatActivity
     @Keep
     public static class BlogViewHolder extends RecyclerView.ViewHolder {
         View mView;
-
         Button mShareButton;
-
 
         public BlogViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
             mShareButton = (Button) mView.findViewById(R.id.btn_share);
         }
-
 
         public void setTitle(String title) {
             TextView post_title = (TextView) mView.findViewById(R.id.post_title);
@@ -388,9 +372,7 @@ public class MainActivity extends AppCompatActivity
 
         public void setImage(final Context ctx, final String image) {
 
-
             final ImageView post_image = (ImageView) mView.findViewById(R.id.post_image);
-
 
             Picasso.with(ctx)
                     .load(image)
@@ -398,8 +380,6 @@ public class MainActivity extends AppCompatActivity
                     .into(post_image, new Callback() {
                         @Override
                         public void onSuccess() {
-
-
                         }
 
                         @Override
@@ -411,16 +391,9 @@ public class MainActivity extends AppCompatActivity
                                     .into(post_image);
                         }
 
-
                     });
-
-
         }
-
-
-
     }
-
 }
 
 

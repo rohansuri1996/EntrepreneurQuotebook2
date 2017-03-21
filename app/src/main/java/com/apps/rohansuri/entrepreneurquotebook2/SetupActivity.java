@@ -39,7 +39,6 @@ public class SetupActivity extends AppCompatActivity {
         });
     }
 
-
     private void startSetupAccount() {
 
         String user_id=mAuth.getCurrentUser().getUid();
