@@ -47,11 +47,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabaseUsers.keepSynced(true);
-
         mAuth = FirebaseAuth.getInstance();
-
         mProgress = new ProgressDialog(this);
-
         mGoogleBtn = (SignInButton)findViewById(R.id.googleBtn);
 
         // Configure Google Sign In
@@ -103,7 +100,6 @@ public class LoginActivity extends AppCompatActivity {
                 // Google Sign In failed, update UI appropriately
                 mProgress.dismiss();
                 Toast.makeText(getApplicationContext(), "Error, try again.", Toast.LENGTH_SHORT).show();
-
             }
         }
     }
@@ -137,9 +133,7 @@ public class LoginActivity extends AppCompatActivity {
     private void checkUserExist(){
 
         if (mAuth.getCurrentUser()!=null) {
-
             final String user_id = mAuth.getCurrentUser().getUid();
-
             mDatabaseUsers.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {

@@ -1,14 +1,16 @@
 package com.apps.rohansuri.entrepreneurquotebook2;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Keep;
@@ -21,6 +23,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +40,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity
     private LinearLayoutManager mLayoutManager;
 
     private FirebaseAuth mAuth;//for login
+    private GoogleApiClient mGoogleApiClient;
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -80,12 +85,12 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() == null) {
-                    Toast.makeText(MainActivity.this, "onAuthStateChanged", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "onAuthStateChanged", Toast.LENGTH_SHORT).show();
                     Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
                     loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(loginIntent);
                 } else {
-                    Toast.makeText(MainActivity.this, "onAuthStateChanged Else Statement", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "onAuthStateChanged Else Statement", Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -125,6 +130,19 @@ public class MainActivity extends AppCompatActivity
                 .addTestDevice("11E9DD4E27F18CF68FA8F6584F4B1D67") //Avi's phone
                 .build();
         mAdView.loadAd(adRequest);
+
+        SharedPreferences preferences = getSharedPreferences("progress", MODE_PRIVATE);
+        int appUsedCount = preferences.getInt("appUsedCount", 0);
+        appUsedCount++;
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("appUsedCount", appUsedCount);
+        editor.apply();
+
+        if (appUsedCount == 10 || appUsedCount == 20 || appUsedCount == 40 || appUsedCount == 60 || appUsedCount == 80 || appUsedCount == 200) {
+            AskForRating();
+        } else {
+            //finish();
+        }
 
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -182,7 +200,7 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.hasChild(user_id)) {
-                        Toast.makeText(MainActivity.this, "UserExit" + user_id, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "UserExit" + user_id, Toast.LENGTH_SHORT).show();
                         // Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
                         //setupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         // startActivity(setupIntent);
@@ -191,7 +209,7 @@ public class MainActivity extends AppCompatActivity
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(MainActivity.this, "Canceled" + user_id, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Canceled" + user_id, Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -265,6 +283,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.rate_nav:
                 Toast.makeText(getApplicationContext(), R.string.rate_toast, Toast.LENGTH_SHORT).show();
                 rateApp();
+                //AskForRating();
                 break;
             case R.id.logout_nav:
                 Toast.makeText(getApplicationContext(), R.string.logout_toast, Toast.LENGTH_SHORT).show();
@@ -292,30 +311,43 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void logout() {
+        //firebae sign out
         mAuth.signOut();
+        //FirebaseAuth.getInstance().signOut();
+
+    }
+
+    private void AskForRating() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this,R.style.DialogeTheme);
+        alert.setTitle(R.string.rate);
+        alert.setIcon(R.drawable.ic_star_border_black_18dp);
+        alert.setMessage(R.string.rate_feed);
+        alert.setPositiveButton(R.string.rate_b, new Dialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String url = "https://play.google.com/store/apps/details?id=" + getPackageName();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+        alert.setNegativeButton(R.string.l, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //finish();
+            }
+        });
+        alert.show();
+
     }
 
     public void rateApp() {
         try {
-            Intent rateIntent = rateIntentForUrl("market://details");
-            startActivity(rateIntent);
-        } catch (ActivityNotFoundException e) {
-            Intent rateIntent = rateIntentForUrl("https://play.google.com/store/apps/details");
-            startActivity(rateIntent);
+            {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
+            }
+        } catch (ActivityNotFoundException e1) {
+            Toast.makeText(this, R.string.rate_error, Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private Intent rateIntentForUrl(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("%s?id=%s", url, getPackageName())));
-        int flags = Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_MULTIPLE_TASK;
-        if (Build.VERSION.SDK_INT >= 21) {
-            flags |= Intent.FLAG_ACTIVITY_NEW_DOCUMENT;
-        } else {
-            //noinspection deprecation
-            flags |= Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET;
-        }
-        intent.addFlags(flags);
-        return intent;
     }
 
     // Can be triggered by a view event such as a button press
