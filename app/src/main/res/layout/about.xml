@@ -18,20 +18,20 @@ android:weightSum="1">
         android:layout_centerHorizontal="true"/>
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Developed by Rohan Suri."
-        android:id="@+id/textView"
-        android:padding="16dp"
-        android:textColor="@color/abc_primary_text_material_light"
-        android:textSize="30sp"
+        android:layout_below="@+id/aboutPic"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:fontFamily="cursive"
+        android:padding="16dp"
+        android:text="Developed by Tigon Studios"
 
         android:textAllCaps="false"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/aboutPic"
-        android:layout_centerHorizontal="true" />
+        android:textColor="@color/abc_primary_text_material_light"
+        android:textSize="30sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:layout_width="match_parent"

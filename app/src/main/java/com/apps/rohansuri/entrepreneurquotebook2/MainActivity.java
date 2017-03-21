@@ -240,9 +240,23 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_add) {
-            startActivity(new Intent(MainActivity.this, PostActivity.class));
+            //startActivity(new Intent(MainActivity.this, PostActivity.class));
+            postDialog();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void postDialog(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this,R.style.DialogeTheme);
+        alert.setTitle(R.string.coming);
+        alert.setIcon(R.drawable.ic_menu_camera);
+        alert.setMessage(R.string.post_feature);
+        alert.setPositiveButton(R.string.ok, new Dialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+            }
+        });
+        alert.show();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -314,6 +328,7 @@ public class MainActivity extends AppCompatActivity
         //firebae sign out
         mAuth.signOut();
         //FirebaseAuth.getInstance().signOut();
+
 
     }
 

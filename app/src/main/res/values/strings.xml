@@ -50,4 +50,9 @@
     <string name="email_subject">Promotion</string>
     <string name="contact_us">Contact Us</string>
     <string name="promotion">Promotional Content</string>
+    <string name="share_b">Share</string>
+    <string name="post_title_goes_here">post title goes here</string>
+    <string name="ok">OK</string>
+    <string name="post_feature"> Chillaxx, we are too busy playing PlayStation, this feature will come in the next update.</string>
+    <string name="coming">Coming Soon</string>
 </resources>

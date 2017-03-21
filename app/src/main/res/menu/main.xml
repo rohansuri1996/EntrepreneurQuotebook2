@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_add"
-        android:icon="@mipmap/ic_add_white_24dp"
-        app:showAsAction="always"
-        android:title="@string/add_post" />
+        android:icon="@drawable/ic_menu_camera_white"
+        android:title="@string/add_post"
+        app:showAsAction="always" />
 
 </menu>
