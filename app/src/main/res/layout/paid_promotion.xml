@@ -12,12 +12,11 @@
         android:fontFamily="cursive"
         android:lineSpacingExtra="8sp"
         android:padding="20dp"
-        android:text="Promote your business here. "
+        android:text="@string/promote"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
-
         android:textStyle="normal|bold" />
 
 
@@ -27,22 +26,20 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.03"
         android:ems="10"
-        android:fontFamily="cursive"
         android:lineSpacingExtra="8sp"
         android:padding="20dp"
-        android:text="explaination: how to submit ad"
+        android:text="@string/explaination"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="normal|bold" />
 
-    <TextView
-        android:id="@+id/editText2"
+    <Button
+        android:id="@+id/emailBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-
-        android:text="tigonstudios1@gmail.com"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary" />
+        android:layout_gravity="center_horizontal|bottom"
+        android:background="@color/colorPrimary"
+        android:text="@string/contact_us"
+        android:textColor="#ffffff" />
 </LinearLayout>
