@@ -3,7 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_light_background"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:clickable="true">
 
     <TextView
         android:id="@+id/textView2"
