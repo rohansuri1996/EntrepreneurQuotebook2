@@ -36,7 +36,8 @@
         <activity android:name="com.equ.rohansuri.entrepreneurquotebook.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="com.equ.rohansuri.entrepreneurquotebook.SetupActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            />
     </application>
 
 </manifest>

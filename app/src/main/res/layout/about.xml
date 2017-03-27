@@ -9,15 +9,14 @@
 
     <ImageView
         android:id="@+id/aboutPic"
-        android:layout_width="271dp"
-        android:layout_height="271dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_centerHorizontal="true"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:layout_gravity="center_horizontal"
         android:contentDescription="about image"
         android:paddingTop="12dp"
-        android:src="@drawable/ic_launcher_min" />
+        android:src="@drawable/ic_launcher_min"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textView"
