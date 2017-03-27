@@ -32,7 +32,8 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:layout_below="@+id/setupNameField"
-        android:layout_alignParentStart="true" />
+        android:layout_alignStart="@+id/setupNameField"
+        android:layout_alignEnd="@+id/setupNameField" />
     <EditText
         android:id="@+id/setupNameField"
         android:layout_width="match_parent"

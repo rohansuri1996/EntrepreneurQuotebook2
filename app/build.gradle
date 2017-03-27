@@ -9,8 +9,8 @@ android {
         targetSdkVersion 25
         multiDexEnabled = true
         vectorDrawables.useSupportLibrary = true
-        versionCode 2
-        versionName "1.0.0.1"
+        versionCode 8
+        versionName "3.0.0"
         resConfig("en")
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
