@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    android:orientation="vertical" android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/cardview_light_background"
-android:weightSum="1">
     <ImageView
+        android:id="@+id/aboutPic"
         android:layout_width="271dp"
         android:layout_height="271dp"
-        android:id="@+id/aboutPic"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="12dp"
-        android:src="@drawable/ic_launcher_min"
-        android:contentDescription="about image"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textView3"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="about image"
+        android:paddingTop="12dp"
+        android:src="@drawable/ic_launcher_min" />
 
     <TextView
         android:id="@+id/textView"
@@ -34,45 +36,44 @@ android:weightSum="1">
         android:textStyle="normal|bold" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Disclaimer-All the images used in this app belongs to their respective owners."
-        android:id="@+id/textView4"
-        android:textSize="13sp"
-        android:paddingLeft="8dp"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="cursive"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact me-tigonstudios1@gmail.com"
-        android:id="@+id/textView3"
+        android:layout_alignParentStart="true"
         android:layout_gravity="center_horizontal"
-        android:textSize="20sp"
-        android:textIsSelectable="true"
+        android:layout_marginTop="30dp"
         android:fontFamily="cursive"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:paddingLeft="8dp"
+        android:text="Disclaimer-All the images used in this app belongs to their respective owners."
+        android:textSize="13sp" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="cursive"
+        android:text="Contact me-tigonstudios1@gmail.com"
+        android:textIsSelectable="true"
+        android:textSize="20sp" />
 
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Note-This application requires an active internet connection."
-        android:id="@+id/textView5"
-        android:textSize="12sp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:fontFamily="cursive"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="cursive"
-        android:layout_below="@+id/textView3"
 
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"/>
+        android:text="Note-This application requires an active internet connection."
+        android:textSize="12sp" />
 
 </RelativeLayout>
