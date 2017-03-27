@@ -1,12 +1,8 @@
-package com.apps.rohansuri.entrepreneurquotebook2;
+package com.equ.rohansuri.entrepreneurquotebook;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-
-import com.apps.rohansuri.entrepreneurquotebook2.MainActivity;
-import com.apps.rohansuri.entrepreneurquotebook2.R;
 
 
 public class SplashScreen extends Activity {

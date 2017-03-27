@@ -1,4 +1,4 @@
-package com.apps.rohansuri.entrepreneurquotebook2;
+package com.equ.rohansuri.entrepreneurquotebook;
 
 import android.app.Application;
 import com.google.firebase.database.FirebaseDatabase;

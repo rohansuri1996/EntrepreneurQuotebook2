@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
     defaultConfig {
-        applicationId "com.apps.rohansuri.entrepreneurquotebook2"
+        applicationId "com.equ.rohansuri.entrepreneurquotebook"
         minSdkVersion 19
         targetSdkVersion 25
         multiDexEnabled = true
