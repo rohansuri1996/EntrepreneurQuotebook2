@@ -59,41 +59,18 @@
       },
       "oauth_client": [
         {
-          "client_id": "334195424970-m1ice2fibacphpsg4mai7g0ahrum492i.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCcDOtiYNDhra1z-HcOLUR1XIXQPtC_hDU"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:334195424970:android:d1257481233153ec",
-        "android_client_info": {
-          "package_name": "com.apps.rohansuri.entrepreneurquotebook2"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "334195424970-s13qmvbhlvis3ojpiokiblihe0hg7j8h.apps.googleusercontent.com",
+          "client_id": "334195424970-krorh14s3jvi3601g59q9sh8hk6s25bl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.apps.rohansuri.entrepreneurquotebook2",
+            "package_name": "com.equ.rohansuri.entrepreneurquotebook",
+            "certificate_hash": "cdb2a1ce7c8ae3dce4a7c7273e3d86376b2329ec"
+          }
+        },
+        {
+          "client_id": "334195424970-40b3ojq2r1ghhrv35ghdeu8src2ttjne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.equ.rohansuri.entrepreneurquotebook",
             "certificate_hash": "1452054636cc94ef144fc5baaba8423b5f0a0190"
           }
         },
@@ -112,13 +89,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "334195424970-m1ice2fibacphpsg4mai7g0ahrum492i.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

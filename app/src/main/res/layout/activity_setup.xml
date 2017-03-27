@@ -29,10 +29,11 @@
         android:layout_height="wrap_content"
         android:text="@string/welcome"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:layout_below="@+id/setupNameField"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="13dp" />
+        android:layout_marginTop="13dp"
+        android:padding="12dp"/>
     <EditText
         android:id="@+id/setupNameField"
         android:layout_width="match_parent"
