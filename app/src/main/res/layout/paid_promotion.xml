@@ -39,10 +39,9 @@
         android:id="@+id/emailBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-
-        android:layout_gravity="center_horizontal|bottom"
+        android:layout_gravity="center|bottom"
         android:background="@color/colorPrimary"
+        android:padding="10dp"
         android:text="@string/contact_us"
         android:textColor="#ffffff" />
 </LinearLayout>

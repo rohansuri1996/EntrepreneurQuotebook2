@@ -45,7 +45,7 @@
     <string name="l">Later</string>
     <string name="rate_b">Rate it!</string>
     <string name="promote">Promote your business here.</string>
-    <string name="explaination">We would love to have you on-board. We can place your content in our app\'s feed that can reach thousands of people daily. Please send us an e-mail and we can discuss pricing</string>
+    <string name="explaination">We can place your content in our app\'s feed that can reach thousands of people daily. Please send us an e-mail and we can discuss pricing</string>
     <string name="email">tigonstudios1@gmail.com</string>
     <string name="email_subject">Promotion</string>
     <string name="contact_us">Contact Us</string>
@@ -55,4 +55,10 @@
     <string name="ok">OK</string>
     <string name="post_feature">Chillaxx, we are too busy playing PlayStation,post feature will be coming soon.</string>
     <string name="coming">Post: Coming Soon</string>
+    <string name="what_s_your_name">What\'s your name?</string>
+    <string name="submit">Submit</string>
+    <string name="setup_your_account">Setup your account</string>
+    <string name="welcome">Welcome to Entrepreneur Quotebook, We can\'t wait to have you! Just enter your name and hit Submit and you are in!</string>
+    <string name="made_with_love_in_india_and_israel">Made with love in India and Israel.</string>
+    <string name="entrepreneur_quotebook">Entrepreneur Quotebook</string>
 </resources>

@@ -8,6 +8,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 25
         multiDexEnabled = true
+        vectorDrawables.useSupportLibrary = true
         versionCode 2
         versionName "1.0.0.1"
         resConfig("en")
@@ -15,6 +16,7 @@ android {
     }
     buildTypes {
         release {
+            shrinkResources true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
