@@ -15,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "334195424970-vf5hsp3su3qjk3s76fecknpn9rb2ae10.apps.googleusercontent.com",
+          "client_id": "334195424970-6ck055ogap9ocf3pkjdc4t4ej2kk7kno.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.apps.rohansuri.noname",
@@ -59,15 +59,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "334195424970-krorh14s3jvi3601g59q9sh8hk6s25bl.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.equ.rohansuri.entrepreneurquotebook",
-            "certificate_hash": "cdb2a1ce7c8ae3dce4a7c7273e3d86376b2329ec"
-          }
-        },
-        {
-          "client_id": "334195424970-40b3ojq2r1ghhrv35ghdeu8src2ttjne.apps.googleusercontent.com",
+          "client_id": "334195424970-mnba24prsro5b6s39gtp60ms99fpdnab.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.equ.rohansuri.entrepreneurquotebook",
@@ -89,8 +81,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334195424970-m1ice2fibacphpsg4mai7g0ahrum492i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
