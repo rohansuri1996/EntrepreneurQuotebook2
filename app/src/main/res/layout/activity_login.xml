@@ -7,6 +7,14 @@
     android:fitsSystemWindows="true"
     tools:context="com.equ.rohansuri.entrepreneurquotebook.LoginActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -21,53 +29,48 @@
             android:layout_width="@dimen/logo_w_h"
             android:layout_height="@dimen/logo_w_h"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="6dp"
             android:src="@drawable/a123" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dip"
             android:fontFamily="cursive"
             android:text="Entrepreneur Quotebook"
             android:textAlignment="center"
-            android:textSize="24dp"
-            android:textStyle="bold"
             android:textColor="@color/white"
-            android:layout_marginBottom="15dp"/>
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-        <android.support.design.widget.TextInputLayout
+
+        <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
 
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/hint_email"
-                android:inputType="textEmailAddress"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:background="@drawable/back"
-                android:padding="8dp"/>/>
-        </android.support.design.widget.TextInputLayout>
+            android:background="@drawable/back"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/hint_password"
-                android:inputType="textPassword"
-                android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
-                android:background="@drawable/back"
-                android:padding="8dp"/>
-        </android.support.design.widget.TextInputLayout>
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/back"
+
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" />
+
 
         <!-- Login Button -->
 
@@ -96,19 +99,11 @@
             android:id="@+id/btn_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
+            android:layout_marginTop="10dip"
             android:background="@null"
             android:text="@string/btn_link_to_register"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15dp" />
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
 </android.support.design.widget.CoordinatorLayout>
