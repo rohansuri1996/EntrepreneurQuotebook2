@@ -1,51 +1,63 @@
 package com.equ.rohansuri.entrepreneurquotebook;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 
 public class Privacy_frag extends Fragment {
     private WebView webView;
-    private ProgressBar progressBarT4;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         //View v=inflater.inflate(R.layout.privacy_policy, parent, false);
-         final View v = inflater.inflate(R.layout.privacy_policy, parent, false);
+        final View v = inflater.inflate(R.layout.privacy_policy, parent, false);
         //final ProgressDialog pd = ProgressDialog.show(getActivity(), "", "Loading...",true);
         //WebView webview = (WebView) v.findViewById(R.id.webview_a);
-       // webview.loadUrl("https://sites.google.com/view/equ/privacy-policy");
-        progressBarT4 = (ProgressBar) v.findViewById(R.id.progressbar);
+        // webview.loadUrl("https://sites.google.com/view/equ/privacy-policy");
+        progressBar = (ProgressBar) v.findViewById(R.id.progressbar);
+        progressBar.setMax(100);
+        progressBar.setVisibility(View.GONE);
 
         webView = (WebView) v.findViewById(R.id.webview_a);
         //webView.setWebViewClient(new WebViewClient());
-        webView.setWebViewClient(new WebViewClient() {
+        //progressBarT4.setVisibility(View.VISIBLE);
+        webView.loadUrl("https://sites.google.com/view/equ/privacy-policy");
+
+        webView.setWebChromeClient(new WebChromeClient() {
 
             @Override
-            public void onPageFinished(WebView view, String url) {
-                view.setVisibility(View.VISIBLE);
-                progressBarT4.setVisibility(View.GONE);
-                //you might need this
-                view.bringToFront();
-            }
-            @Override
-            public void onPageStarted(WebView view, String url,  Bitmap favicon) {
-                progressBarT4.setVisibility(View.VISIBLE);
-                view.setVisibility(View.GONE);//hide the webview that will display your dialog
+            public void onProgressChanged(WebView view, int progress) {
+                super.onProgressChanged(view, progress);
+
+
+                // Your custom code.
+                getActivity().setTitle(getString(R.string.loading)); //changes app title monetarily
+
+                progressBar.setVisibility(View.VISIBLE);
+
+                progressBar.bringToFront();
+                progressBar.setProgress(progress);
+
+                // Return the app name after finish loading
+                if(progress == 100) {
+                    getActivity().setTitle(R.string.app_name);
+                    progressBar.setVisibility(View.GONE);
+                }
+
+
 
             }
         });
 
-        //progressBarT4.setVisibility(View.VISIBLE);
-        webView.loadUrl("https://sites.google.com/view/equ/privacy-policy");
+
 
 
 
@@ -55,3 +67,7 @@ public class Privacy_frag extends Fragment {
 
 
 }
+
+
+
+

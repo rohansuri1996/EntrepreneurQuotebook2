@@ -277,6 +277,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.home_nav:
                 Intent i = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(i);
+                Toast.makeText(getApplicationContext(), R.string.uhome, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ads_nav:
                 Toast.makeText(getApplicationContext(), R.string.ads_toast, Toast.LENGTH_SHORT).show();

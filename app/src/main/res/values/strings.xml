@@ -103,4 +103,9 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to send you password reset instructions.</string>
+    <string name="loading">Loading...</string>
+    <string name="uhome">You are home</string>
+    <string name="register">Please enter your registered e-mail id</string>
+    <string name="instructions">We have sent you instructions to reset your password!</string>
+    <string name="failed">Failed to send reset email!</string>
 </resources>

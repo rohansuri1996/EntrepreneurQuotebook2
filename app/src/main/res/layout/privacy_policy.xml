@@ -9,16 +9,15 @@
         android:id="@+id/progressbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:indeterminateOnly="true"
         android:padding="10dp"
         android:theme="@style/DialogeTheme" />
+    <!--style="?android:attr/progressBarStyleHorizontal" -->
+    <!--This sets the progress bar to a bar rather than circle-->
 
     <WebView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/webview_a"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="match_parent" />
 </RelativeLayout>
