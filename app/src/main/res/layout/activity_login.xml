@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.equ.rohansuri.entrepreneurquotebook.LoginActivity"
-    android:background="@drawable/login_bg"
-    style="@style/AppTheme.ActionBar.Transparent">
+    android:background="@drawable/login_bg">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -32,7 +31,8 @@
             android:layout_height="@dimen/logo_w_h"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="6dp"
-            android:src="@drawable/a123" />
+            android:src="@drawable/a123"
+            android:contentDescription="@string/background_image" />
 
         <TextView
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:text="@string/entrepreneu"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
@@ -52,7 +52,7 @@
             android:text="@string/made_love"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="8dp"
+            android:textSize="8sp"
             android:textStyle="italic" />
 
 
