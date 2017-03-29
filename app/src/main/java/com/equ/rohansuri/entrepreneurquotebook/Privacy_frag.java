@@ -39,7 +39,7 @@ public class Privacy_frag extends Fragment {
 
 
                 // Your custom code.
-                getActivity().setTitle(getString(R.string.loading)); //changes app title monetarily
+                //getActivity().setTitle(getString(R.string.loading)); //changes app title monetarily
 
                 progressBar.setVisibility(View.VISIBLE);
 
@@ -48,7 +48,7 @@ public class Privacy_frag extends Fragment {
 
                 // Return the app name after finish loading
                 if(progress == 100) {
-                    getActivity().setTitle(R.string.app_name);
+                    getActivity().setTitle(getString(R.string.privacy));
                     progressBar.setVisibility(View.GONE);
                 }
 

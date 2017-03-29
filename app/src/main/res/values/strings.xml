@@ -88,10 +88,10 @@
     <string name="title_activity_login">Sign in</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
-    <string name="hint_name">Fullname</string>
+    <string name="hint_name">Full Name</string>
     <string name="btn_login">LOGIN</string>
     <string name="btn_link_to_register">Not a member? Get registered to Entrepreneur Quotebook now!</string>
-    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="btn_link_to_login">Already Registered. Login!</string>
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
     <string name="btn_forgot_password">Forgot your password?</string>
     <string name="btn_reset_password">Reset Password</string>
@@ -103,9 +103,10 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to send you password reset instructions.</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="uhome">You are home</string>
     <string name="register">Please enter your registered e-mail id</string>
     <string name="instructions">We have sent you instructions to reset your password!</string>
     <string name="failed">Failed to send reset email!</string>
+    <string name="privacy">Privacy Policy</string>
 </resources>
