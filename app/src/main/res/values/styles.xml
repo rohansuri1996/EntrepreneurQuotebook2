@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -24,6 +25,7 @@
     </style>
     <style name="DialogeTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorPrimary</item>
+        <!--this is for all the dialog boxes so the button will be primary color-->
     </style>
 
 

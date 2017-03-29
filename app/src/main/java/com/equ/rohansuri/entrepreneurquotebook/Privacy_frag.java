@@ -48,7 +48,7 @@ public class Privacy_frag extends Fragment {
 
                 // Return the app name after finish loading
                 if(progress == 100) {
-                    getActivity().setTitle(getString(R.string.privacy));
+                    getActivity().setTitle(getString(R.string.app_name));
                     progressBar.setVisibility(View.GONE);
                 }
 

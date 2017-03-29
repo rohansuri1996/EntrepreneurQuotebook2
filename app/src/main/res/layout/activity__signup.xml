@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/back"
             android:hint="@string/email"
+            android:layout_marginBottom="10dp"
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:padding="10dp"
