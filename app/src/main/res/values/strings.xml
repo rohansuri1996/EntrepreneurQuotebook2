@@ -111,4 +111,6 @@
     <string name="privacy">Privacy Policy</string>
     <string name="emailhint">Email</string>
     <string name="password">Password</string>
+    <string name="enterpass">Enter password!</string>
+    <string name="enteremail">Enter email address!</string>
 </resources>

@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     tools:context="com.equ.rohansuri.entrepreneurquotebook.LoginActivity"
     android:background="@drawable/login_bg"
-    >
+    style="@style/AppTheme.ActionBar.Transparent">
 
     <ProgressBar
         android:id="@+id/progressBar"

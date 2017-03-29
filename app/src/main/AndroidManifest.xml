@@ -43,16 +43,20 @@
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.ActionBar.Transparent" />
         <activity
             android:name=".SetupActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SignupActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_signup"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ResetPasswordActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
