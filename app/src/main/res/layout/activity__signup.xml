@@ -35,7 +35,9 @@
             android:maxLines="1"
             android:padding="10dp"
             android:singleLine="true"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_margin="10dp"
+            />
 
 
         <EditText
@@ -51,7 +53,8 @@
                 android:singleLine="true"
                 android:textColor="@android:color/white"
                 android:background="@drawable/back"
-                android:padding="10dp"/>
+                android:padding="10dp"
+            android:layout_margin="10dp"/>
 
 
 
