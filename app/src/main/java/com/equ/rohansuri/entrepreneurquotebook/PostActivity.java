@@ -65,7 +65,7 @@ public class PostActivity extends AppCompatActivity {
     private void startPosting() {
 
         mProgress.setMessage("Posting...");
-
+        mProgress.setCanceledOnTouchOutside(false);
         final String title_val = mPostTitle.getText().toString().trim();
 
         if (mImageUri != null) {
@@ -77,12 +77,14 @@ public class PostActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            Uri downloadUrl=taskSnapshot.getDownloadUrl();
+                            Uri downloadUrl= taskSnapshot.getDownloadUrl();
 
                             DatabaseReference newPost=mDatabase.push();
 
                             newPost.child("title").setValue(title_val);
-                            newPost.child("image").setValue(downloadUrl.toString());
+                            if (downloadUrl != null) {
+                                newPost.child("image").setValue(downloadUrl.toString());
+                            }
 
                             mProgress.dismiss();
                             startActivity(new Intent(PostActivity.this,MainActivity.class));

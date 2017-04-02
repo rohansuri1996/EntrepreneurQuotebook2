@@ -9,8 +9,8 @@ android {
         targetSdkVersion 25
         multiDexEnabled = true
         vectorDrawables.useSupportLibrary = true
-        versionCode 10
-        versionName "3.0.2"
+        versionCode 11
+        versionName "3.0.2.1"
         resConfig("en")
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -43,7 +43,6 @@ dependencies {
     compile 'com.google.firebase:firebase-ads:10.2.1'
     compile 'com.google.firebase:firebase-messaging:10.2.1'
     compile 'com.google.firebase:firebase-auth:10.2.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.android.gms:play-services-auth:10.2.1'
     testCompile 'junit:junit:4.12'
 }
