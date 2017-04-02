@@ -27,7 +27,7 @@
         android:layout_gravity="center_horizontal"
         android:fontFamily="cursive"
         android:padding="16dp"
-        android:text="Developed by Tigon Studios"
+        android:text="@string/developed_by_the_upstory_team"
 
         android:textAllCaps="false"
         android:textColor="@color/abc_primary_text_material_light"
@@ -44,7 +44,7 @@
         android:layout_marginTop="30dp"
         android:fontFamily="cursive"
         android:paddingLeft="8dp"
-        android:text="Disclaimer-All the images used in this app belongs to their respective owners."
+        android:text="Disclaimer: All the images used in this app belongs to their respective owners."
         android:textSize="13sp" />
 
     <TextView

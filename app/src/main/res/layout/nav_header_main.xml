@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
         android:paddingTop="8dp"
-        android:text="Entrepreneur Quotebook"
+        android:text="@string/entrepreneur_quotebook"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#fff"
         android:textStyle="bold" />
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/appName"
         android:paddingTop="2dp"
-        android:text="By Tigon Studios"
+        android:text="@string/by_upstory_team"
 
         android:textColor="#fff" />
 

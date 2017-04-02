@@ -7,19 +7,19 @@
     tools:context="com.equ.rohansuri.entrepreneurquotebook.PostActivity">
 
     <ImageButton
+        android:id="@+id/imageSelect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageSelect"
-        android:layout_alignParentTop="true"
-        android:background="#00ffffff"
-        android:src="@mipmap/add_btn"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:layout_gravity="center"
-        android:layout_alignStart="@+id/titleField"
+        android:layout_above="@+id/titleField"
         android:layout_alignEnd="@+id/titleField"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/titleField"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_above="@+id/titleField" />
+        android:adjustViewBounds="true"
+        android:background="#00ffffff"
+        android:scaleType="fitXY"
+        android:src="@mipmap/add_btn" />
 
     <EditText
         android:layout_width="match_parent"
