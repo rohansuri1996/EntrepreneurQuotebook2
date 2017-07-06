@@ -36,7 +36,7 @@
     <string name="promote_your_business_here">Promote your business here.</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="privact_toast">Staying Secure?</string>
-    <string name="ads_activity">Advertisements help us pay for the maintenance of the database and buy some PIZZA.</string>
+    <string name="ads_activity">Advertisements help us pay for the maintaince of the database and buy some PIZZA.</string>
     <string name="bye">Bye</string>
     <string name="rate_app">Rate App</string>
     <string name="rate_error">You don\'t have any app that can open this link</string>
@@ -53,7 +53,7 @@
     <string name="share_b">Share</string>
     <string name="post_title_goes_here">post title goes here</string>
     <string name="ok">OK</string>
-    <string name="post_feature">Chillaxx, we are too busy playing PlayStation, the post feature will be coming soon.</string>
+    <string name="post_feature">Chillaxx, we are too busy playing PlayStation,post feature will be coming soon.</string>
     <string name="coming">Post: Coming Soon</string>
     <string name="what_s_your_name">What\'s your name?</string>
     <string name="submit">Submit</string>
@@ -115,7 +115,6 @@
     <string name="enteremail">Enter email address!</string>
     <string name="made_love">Made with love in India and Israel</string>
     <string name="entrepreneu">Entrepreneur Quotebook</string>
-    <string name="background_image">Background Image</string>
-    <string name="developed_by_the_upstory_team">Developed by The UpStory Team</string>
-    <string name="by_upstory_team">By UpStory Team</string>
+    <string name="background_image" />
+    <string name="by_supernerd_studios" />
 </resources>

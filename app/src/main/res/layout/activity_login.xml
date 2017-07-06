@@ -97,7 +97,7 @@
             android:id="@+id/btn_reset_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
+            android:layout_marginTop="10dip"
             android:background="@null"
             android:text="@string/btn_forgot_password"
             android:textAllCaps="false"
@@ -115,5 +115,12 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/skipbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SKIP LOGIN"
+            android:background="@color/colorAccent"/>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

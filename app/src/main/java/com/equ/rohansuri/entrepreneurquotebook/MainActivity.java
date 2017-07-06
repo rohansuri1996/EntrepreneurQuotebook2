@@ -61,15 +61,13 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private FirebaseAnalytics mFirebaseAnalytics;
+
     private RecyclerView mBlogList;
 
     private DatabaseReference mDatabase;
 
-    private LinearLayoutManager mLayoutManager;
-
     private FirebaseAuth mAuth;//for login
-    private GoogleApiClient mGoogleApiClient;
+
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -94,7 +92,7 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         };
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -108,7 +106,7 @@ public class MainActivity extends AppCompatActivity
         mBlogList = (RecyclerView) findViewById(R.id.blog_List);
         mBlogList.setHasFixedSize(true);
         mBlogList.setLayoutManager(new LinearLayoutManager(this));
-        mLayoutManager = new LinearLayoutManager(MainActivity.this);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(MainActivity.this);
         mLayoutManager.setReverseLayout(true); // THIS ALSO SETS setStackFromBottom to true
         mBlogList.setLayoutManager(mLayoutManager);
         mLayoutManager.setStackFromEnd(true);

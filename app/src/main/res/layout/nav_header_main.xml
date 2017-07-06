@@ -14,32 +14,23 @@
 
     >
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="78dp"
-        android:layout_height="78dp"
-        android:paddingTop="20dp"
-        app:srcCompat="@drawable/ic_launcher_min" />
-
-    <TextView
-        android:id="@+id/appName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:paddingTop="8dp"
-        android:text="@string/entrepreneur_quotebook"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#fff"
-        android:textStyle="bold" />
-
+    
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appName"
-        android:paddingTop="2dp"
-        android:text="@string/by_upstory_team"
 
+        android:layout_centerHorizontal="true"
+        android:paddingTop="2dp"
+        android:text="@string/by_supernerd_studios"
         android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginStart="27dp"
+        android:text="TextView" />
 
 </RelativeLayout>
