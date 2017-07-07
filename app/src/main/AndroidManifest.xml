@@ -60,6 +60,9 @@
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d926e96e85c661aea5df1d58df41f3c3f3eb940c" />
     </application>
 
 </manifest>
