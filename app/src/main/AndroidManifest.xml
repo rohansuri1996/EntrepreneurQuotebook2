@@ -63,6 +63,10 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d926e96e85c661aea5df1d58df41f3c3f3eb940c" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notif" />
     </application>
+
 
 </manifest>
