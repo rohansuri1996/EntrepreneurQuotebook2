@@ -25,7 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset,btnSkip;
-
+    private FirebaseAuth mAuth;
+// ...
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -53,15 +54,42 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
         btnSkip=(Button)findViewById(R.id.skipbtn) ;
+        mAuth = FirebaseAuth.getInstance();
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
-        btnSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            }
-        });
+
+        btnSkip.setOnClickListener(new View.OnClickListener() { //Avi's Auth Anon Method
+
+            //TODO: Add Linked accounts so anon user can sign in with email/google
+                                       @Override
+                                       public void onClick(View v) {
+
+                                           mAuth.signInAnonymously()
+                                                   .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                                       @Override
+                                                       public void onComplete(@NonNull Task<AuthResult> task) {
+                                                           if (task.isSuccessful()) {
+                                                               // Sign in success, update UI with the signed-in user's information
+                                                               Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                               startActivity(intent);
+                                                               finish();
+
+                                                           } else {
+                                                               // If sign in fails, display a message to the user.
+
+                                                               //Log.d("TAG", "signInAnonymously:failure", task.getException());
+                                                               Toast.makeText(LoginActivity.this, R.string.auth_faile ,
+                                                                       Toast.LENGTH_SHORT).show();
+                                                           }
+
+                                                       }
+                                                   });
+
+                                       }
+                                   });
+
+
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,12 +112,12 @@ public class LoginActivity extends AppCompatActivity {
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.email_enter, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.password_enter, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -122,6 +150,9 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+
+
     public void onBackPressed() {
         //  super.onBackPressed();
         moveTaskToBack(true);

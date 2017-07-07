@@ -40,8 +40,6 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -87,9 +85,10 @@ public class MainActivity extends AppCompatActivity
                     Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
                     loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(loginIntent);
-                } else {
-                    //Toast.makeText(MainActivity.this, "onAuthStateChanged Else Statement", Toast.LENGTH_SHORT).show();
                 }
+//                else {
+//                    Toast.makeText(MainActivity.this, "onAuthStateChanged Else Statement", Toast.LENGTH_SHORT).show();
+//                     }
             }
         };
 
@@ -114,7 +113,8 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        //drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -138,8 +138,6 @@ public class MainActivity extends AppCompatActivity
 
         if (appUsedCount == 10 || appUsedCount == 20 || appUsedCount == 40 || appUsedCount == 60 || appUsedCount == 80 || appUsedCount == 200) {
             AskForRating();
-        } else {
-            //finish();
         }
 
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -152,7 +150,6 @@ public class MainActivity extends AppCompatActivity
                 ActivityCompat.requestPermissions(MainActivity.this,
                         new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_REQUEST);
             }
-        } else { //do nothing
         }
         checkUserExist();
 
@@ -259,7 +256,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         displaySelectedScreen(item.getItemId());
         return true;
